@@ -15,8 +15,8 @@ class CreateInformationTable extends Migration
     {
         Schema::create('information', function (Blueprint $table) {
             $table->id();
-            $table->message('string');
-            $table->file('file');
+            $table->string('message');
+            $table->string('file');
             $table->timestamps();
         });
     }
