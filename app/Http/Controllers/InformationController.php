@@ -36,7 +36,8 @@ class InformationController extends Controller
      */
     public function store(StoreInformationRequest $request)
     {
-        //
+        Information::create($request->validated());
+        return view('information', ['message' => 'Jiberildi!']);
     }
 
     /**
