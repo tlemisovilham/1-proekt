@@ -50,7 +50,7 @@ class InformationController extends Controller
             'file' => 'files/'.$imageName
         ]);
 
-        return "Message sent!";
+        return view('index', ['message' => 'Message sent!']);
     }
 
     /**
