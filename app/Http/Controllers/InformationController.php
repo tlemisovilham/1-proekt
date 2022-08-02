@@ -39,15 +39,15 @@ class InformationController extends Controller
     {
         $request->validate([
             'message' => 'required',
-            'file' => 'required'
+            'file' => 'mimes:png,jpg,jpeg|required|max:10000'
         ]);
 
-        $fileName = time().'.'.$request->file->getClientOriginalExtension();
-        $request->file->move_uploaded_file(public_path('/files'), $fileName);
+        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $request->image->move(public_path('/files'), $imageName);
 
         Information::create([
             'message' => $request->message,
-            'file' => 'files/'.$fileName
+            'file' => 'files/'.$imageName
         ]);
 
         return "Message sent!";
