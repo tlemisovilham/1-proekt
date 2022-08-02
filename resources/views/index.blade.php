@@ -7,7 +7,10 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>WELCOME</h1><br>
-    <a href="{{ url('/') }}">Kiriw</a>
+    <a href="{{ url('/logout') }}">logout</a>
+    <ul>
+        <li><a href="{{ url('/registr') }}">Sign up</a></li>
+        <li><a href="{{ url('/login') }}">Sign in</a></li>
+    </ul>
 </body>
 </html>

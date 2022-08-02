@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\InformationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
+<<<<<<< HEAD
+
+=======
+Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/registr', function () {
+    return view('registr');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+
+Route::get('/logout', function () {
+    return view('welcome');
+>>>>>>> 50249ef0d22a9e14d92d88afd8b617d27f8c0b3a
+});
+
+Route::get('/information', function () {
+    return view('information');
+});
+
+
+Route::resource('user', UserController::class);
+Route::resource('information', InformationController::class);

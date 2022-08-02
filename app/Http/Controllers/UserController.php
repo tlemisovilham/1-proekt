@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Information;
+use App\Models\User;
 use Illuminate\Http\Request;
-use tidy;
 
-class InformationController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class InformationController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -37,19 +36,18 @@ class InformationController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'message' => 'required',
-            'file' => 'required'
+            'name' => 'required',
+            'phone' => 'required',
+            'password' => 'required',
         ]);
 
-        $fileName = time().'.'.$request->file->getClientOriginalExtension();
-        $request->file->move_uploaded_file(public_path('/files'), $fileName);
-
-        Information::create([
-            'message' => $request->message,
-            'file' => 'files/'.$fileName
+        User::create([
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'password' => $request->password
         ]);
 
-        return "Message sent!";
+        return view('index');
     }
 
     /**
@@ -58,9 +56,22 @@ class InformationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $request->validate([
+            'phone' => 'required',
+            'password' => 'required'
+        ]);
+
+        $user = User::where('phone', $request['phone'])->where('password', $request['password'])->get();
+        if(isset($user[0]['password']))
+        {
+            return view('information');
+        }
+        else
+        {
+            return view('index', ['status' => 'Phone or password false!']);
+        }
     }
 
     /**
