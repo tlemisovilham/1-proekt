@@ -42,8 +42,8 @@ class InformationController extends Controller
             'file' => 'mimes:png,jpg,jpeg|required|max:10000'
         ]);
 
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
-        $request->image->move(public_path('/files'), $imageName);
+        $imageName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move(public_path('/files'), $imageName);
 
         Information::create([
             'message' => $request->message,

@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ route('information.store') }}" method="POST">
+    <form action="{{ route('information.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <input type="text" name="message" placeholder="message"><br><br>
         <input type="file" name="file" placeholder="file"><br><br>
