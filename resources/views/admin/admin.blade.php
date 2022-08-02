@@ -12,6 +12,12 @@
             <th>message</th>
             <th>file</th>
         </tr>
+        @foreach ($informations as $information)
+            <tr>
+                <td>{{ $information->message }}</td>
+                <td>{{ $information->file }}</td>
+            </tr>
+        @endforeach
     </table>
 </body>
 </html>

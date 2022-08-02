@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Information;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use tidy;
 
 class InformationController extends Controller
@@ -15,7 +16,7 @@ class InformationController extends Controller
      */
     public function index()
     {
-        //
+       
     }
 
     /**
