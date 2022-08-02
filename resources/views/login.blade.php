@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="{{ url('/login{id}') }}" method="POST">
+    <form action="{{ route('user.show', 1) }}" method="GET">
         @csrf
         <input type="text" name="phone" placeholder="phone"><br><br>
         <input type="text" name="password" placeholder="password"><br><br>

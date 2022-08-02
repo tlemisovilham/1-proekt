@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Information;
-use App\Http\Requests\StoreInformationRequest;
-use App\Http\Requests\UpdateInformationRequest;
+use Illuminate\Http\Request;
+use tidy;
 
 class InformationController extends Controller
 {
@@ -31,22 +31,34 @@ class InformationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreInformationRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInformationRequest $request)
+    public function store(Request $request)
     {
-        Information::create($request->validated());
-        return view('information', ['message' => 'Jiberildi!']);
+        $request->validate([
+            'message' => 'required',
+            'file' => 'required'
+        ]);
+
+        $fileName = time().'.'.$request->file->getClientOriginalExtension();
+        $request->file->move_uploaded_file(public_path('/files'), $fileName);
+
+        Information::create([
+            'message' => $request->message,
+            'file' => 'files/'.$fileName
+        ]);
+
+        return "Message sent!";
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Information  $information
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Information $information)
+    public function show($id)
     {
         //
     }
@@ -54,10 +66,10 @@ class InformationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Information  $information
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Information $information)
+    public function edit($id)
     {
         //
     }
@@ -65,11 +77,11 @@ class InformationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateInformationRequest  $request
-     * @param  \App\Models\Information  $information
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInformationRequest $request, Information $information)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -77,10 +89,10 @@ class InformationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Information  $information
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Information $information)
+    public function destroy($id)
     {
         //
     }

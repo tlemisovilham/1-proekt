@@ -19,15 +19,22 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/registr', function(){
+Route::get('/registr', function () {
     return view('registr');
 });
 
-Route::get('/login', function(){
+Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/logout', [UserController::class, 'logout']);
-Route::get('/store', [UserController::class, 'store']);
-Route::get('/create_information', [InformationController::class, 'store']);
+Route::get('/logout', function () {
+    return view('welcome');
+});
 
+Route::get('/information', function () {
+    return view('information');
+});
+
+
+Route::resource('user', UserController::class);
+Route::resource('information', InformationController::class);
