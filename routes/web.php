@@ -3,7 +3,7 @@
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\InformationController as AdminInformationController;
+use App\Http\Controllers\Admin\InformationController as AdminInfo;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,15 +29,13 @@ Route::get('/login', function () {
 });
 
 Route::get('/logout', function () {
-    return view('index');
+    return view('welcome');
 });
 
 Route::get('/information', function () {
     return view('information');
 });
 
-Route::get('/admin',[AdminInformationController::class,'index']);
-
-
 Route::resource('user', UserController::class);
 Route::resource('information', InformationController::class);
+Route::resource('admininfo', AdminInfo::class);
