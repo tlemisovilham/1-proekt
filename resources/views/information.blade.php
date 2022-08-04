@@ -11,7 +11,7 @@
         @csrf
         <input type="text" name="message" placeholder="message"><br><br>
         <input type="file" name="file" placeholder="file"><br><br>
-        <input type="submit" value="Send">
+        <input type="submit" value="Send"><br><br>
     </form>
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -22,5 +22,6 @@
         </ul>
     </div>
     @endif
+    <a href="{{ url('/logout') }}">logout</a>
 </body>
-</html>
+</html> 

@@ -7,7 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <a href="{{ url('/logout') }}">logout</a>
     <ul>
         <li><a href="{{ url('/registr') }}">Sign up</a></li>
         <li><a href="{{ url('/login') }}">Sign in</a></li>

@@ -29,7 +29,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/logout', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/information', function () {
