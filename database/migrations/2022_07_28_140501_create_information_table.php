@@ -17,6 +17,7 @@ class CreateInformationTable extends Migration
             $table->id();
             $table->string('message');
             $table->text('file');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

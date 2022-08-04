@@ -3,8 +3,7 @@
 use App\Http\Controllers\InformationController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\InformationController as AdminInfo;
-
+use App\Http\Controllers\Admin\InformationController as Admininfo;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
